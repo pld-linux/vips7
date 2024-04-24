@@ -1,0 +1,67 @@
+From e3181e05799fa1e51e1a4f8fc6884e3f9c3de765 Mon Sep 17 00:00:00 2001
+From: John Cupitt <jcupitt@gmail.com>
+Date: Mon, 28 Sep 2020 12:32:06 +0100
+Subject: [PATCH] get docs building with goi 1.66+
+
+It builds now, but some doc sections are missing. Fix this properly in
+8.11.
+
+See https://github.com/libvips/libvips/issues/1836
+---
+ ChangeLog                      | 1 +
+ libvips/iofuncs/error.c        | 2 +-
+ libvips/iofuncs/rect.c         | 2 +-
+ libvips/resample/interpolate.c | 2 +-
+ 4 files changed, 4 insertions(+), 3 deletions(-)
+
+#diff --git a/ChangeLog b/ChangeLog
+#index b22258753a..bb6df2f7e5 100644
+#--- a/ChangeLog
+#+++ b/ChangeLog
+#@@ -10,6 +10,7 @@
+# - better heif signature detection [lovell]
+# - fix vips_fractsurf() typo [kleisauke]
+# - better heif EOF detection [lovell]
+#+- fix gir build with g-o-i 1.66+ [László]
+# 
+# 9/8/20 started 8.10.1
+# - fix markdown -> xml conversion in doc generation
+diff --git a/libvips/iofuncs/error.c b/libvips/iofuncs/error.c
+index 165623843d..746742cb37 100644
+--- a/libvips/iofuncs/error.c
++++ b/libvips/iofuncs/error.c
+@@ -71,7 +71,7 @@
+ #endif /*OS_WIN32*/
+ 
+ /**
+- * SECTION: error
++ * SECTION: errors
+  * @short_description: error messages and error handling
+  * @stability: Stable
+  * @include: vips/vips.h
+diff --git a/libvips/iofuncs/rect.c b/libvips/iofuncs/rect.c
+index 79ae69f764..9038efb9bb 100644
+--- a/libvips/iofuncs/rect.c
++++ b/libvips/iofuncs/rect.c
+@@ -45,7 +45,7 @@
+ #include <vips/vips.h>
+ 
+ /**
+- * SECTION: rect
++ * SECTION: rectangle
+  * @short_description: the VIPS rectangle class
+  * @stability: Stable
+  * @see_also: <link linkend="VipsRegion">region</link>
+diff --git a/libvips/resample/interpolate.c b/libvips/resample/interpolate.c
+index 5ec50b742e..d295ad9fa7 100644
+--- a/libvips/resample/interpolate.c
++++ b/libvips/resample/interpolate.c
+@@ -63,7 +63,7 @@
+ #include <vips/internal.h>
+ 
+ /**
+- * SECTION: interpolate
++ * SECTION: interpolator
+  * @short_description: various interpolators: nearest, bilinear, and
+  * some non-linear
+  * @stability: Stable
